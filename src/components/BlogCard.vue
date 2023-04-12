@@ -18,10 +18,12 @@ defineProps({
 
 <style lang="scss" scoped>
 .card {
-  border: 2px solid #4c4352;
+  border: 2px solid;
+  border-color: map-get($colors, 'dark');
   border-radius: 7px;
 
   > .card-title {
+    font-family: 'Josefin Sans', sans-serif;
     color: #ffffff;
     background-color: #4c4352;
     font-size: 24px;

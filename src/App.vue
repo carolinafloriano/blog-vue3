@@ -21,4 +21,6 @@ import BlogCard from './components/BlogCard.vue'
   </BlogCard>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+@import url('@/assets/styles/all.scss');
+</style>
