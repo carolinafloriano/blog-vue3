@@ -1,26 +1,35 @@
 <script setup>
 import BlogPost from './components/BlogPost.vue'
 import BlogCard from './components/BlogCard.vue'
+import BlogForm from './components/BlogForm.vue'
+import { useStore } from './store/index.js'
+
+const store = useStore()
+
+const postsList = store.getPostsList
 </script>
 
 <template>
-  <BlogCard title="Posts">
-    <BlogPost>
-      <template #title> The biggest whale on earth </template>
-      <template #subtitle> Lorem ipsum dolor sit emet! </template>
-      <template #author> Pedro Pedrozo </template>
-      <template #date>12/12/2022</template>
-      <template #content
-        >Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel urna ac leo porttitor
-        malesuada. Duis nec sollicitudin diam. Nullam vitae elit pellentesque, porta tortor a,
-        gravida nibh. Phasellus ut ultrices odio. Vestibulum quis rhoncus nisl. Vivamus eget
-        elementum justo, vel mattis justo. Nullam varius diam non arcu fermentum, ac lacinia erat
-        maximus.</template
-      >
-    </BlogPost>
-  </BlogCard>
+  <div class="blog">
+    <BlogCard title="Posts">
+      <BlogPost v-for="(post, index) in postsList" :key="'post' + index">
+        <template #title>{{ post.title }} </template>
+        <template #subtitle> {{ post.subtitle }}</template>
+        <template #author> {{ post.author }} </template>
+        <template #date>{{ post.date }}</template>
+        <template #content>{{ post.content }}</template>
+      </BlogPost>
+    </BlogCard>
+    <BlogCard title="Form"> <BlogForm></BlogForm></BlogCard>
+  </div>
 </template>
 
 <style lang="scss" scoped>
 @import url('@/assets/styles/all.scss');
+
+.blog {
+  display: flex;
+  flex-direction: row;
+  gap: 15px;
+}
 </style>
