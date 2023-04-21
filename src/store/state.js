@@ -25,7 +25,8 @@ const state = () => {
         content:
           'Lorem ipsum dolor sit amet, consectetur adipiscing elit. In vel urna ac leo porttitor malesuada. Duis nec sollicitudin diam. Nullam vitae elit pellentesque, porta tortor a, gravida nibh. Phasellus ut ultrices odio. Vestibulum quis rhoncus nisl. Vivamus eget elementum justo, vel mattis justo. Nullam varius diam non arcu fermentum, ac lacinia erat maximus.'
       }
-    ]
+    ],
+    isEditing: false
   }
 }
 

@@ -4,5 +4,9 @@ export default {
    */
   updatePostsList(post) {
     this.postsList.push(post)
+  },
+
+  editPost() {
+    this.isEditing = true
   }
 }

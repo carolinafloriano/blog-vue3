@@ -1,5 +1,12 @@
 <script setup>
-defineProps({})
+import { useStore } from '../store/index.js'
+
+const store = useStore()
+
+function editPost() {
+  store.editPost()
+  console.log(store.isEditing)
+}
 </script>
 
 <template>
@@ -17,7 +24,7 @@ defineProps({})
           <button class="deleteButton">
             <i class="fa-solid fa-trash-can"></i>
           </button>
-          <button class="editButton">
+          <button class="editButton" @click="editPost()">
             <i class="fa-solid fa-pen"></i>
           </button>
         </div>
@@ -108,6 +115,7 @@ defineProps({})
           background-color: map-get($colors, 'danger');
           padding: 6px 7px;
           border-radius: 5px;
+          cursor: pointer;
         }
 
         > .editButton {
@@ -116,6 +124,7 @@ defineProps({})
           background-color: map-get($colors, 'secondary');
           padding: 6px 7px;
           border-radius: 5px;
+          cursor: pointer;
         }
       }
 

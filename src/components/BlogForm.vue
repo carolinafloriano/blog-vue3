@@ -6,6 +6,8 @@ const postSubtitle = ''
 const postContent = ''
 const store = useStore()
 
+const formEdit = store.isEditing
+
 defineProps({})
 
 function newPost() {
@@ -42,7 +44,10 @@ function newPost() {
       class="input-text area-text"
       v-model="postContent"
     ></textarea>
-    <button type="submit" class="publishButton" @click="newPost()">NEW POST</button>
+    <button type="submit" class="publishButton" @click="newPost()">
+      <span v-if="!formEdit">NEW POST</span>
+      <span v-else>EDIT</span>
+    </button>
   </div>
 </template>
 
