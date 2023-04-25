@@ -56,6 +56,8 @@ function newPost() {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  height: 100%;
+  box-sizing: border-box;
   > .input-text {
     font-family: 'Josefin Sans';
     font-style: normal;
