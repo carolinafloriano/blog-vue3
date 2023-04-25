@@ -18,6 +18,8 @@ defineProps({
 
 <style lang="scss" scoped>
 .card {
+  display: flex;
+  flex-direction: column;
   border: 2px solid;
   border-color: map-get($colors, 'dark');
   border-radius: 7px;
@@ -39,6 +41,9 @@ defineProps({
     padding: 20px;
     height: 100%;
     box-sizing: border-box;
+    flex-grow: 1;
+    max-height: 80vh;
+    overflow-y: auto;
   }
 }
 </style>

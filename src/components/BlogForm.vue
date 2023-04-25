@@ -1,12 +1,15 @@
 <script setup>
 import { useStore } from '../store/index.js'
+import { computed } from 'vue'
 
 const postTitle = ''
 const postSubtitle = ''
 const postContent = ''
 const store = useStore()
 
-const formEdit = store.isEditing
+const formEdit = computed(() => {
+  return store.isEditing
+})
 
 defineProps({})
 
@@ -26,8 +29,11 @@ function newPost() {
     date: dataAtual,
     content: this.postContent
   }
-
   store.updatePostsList(post)
+
+  this.postTitle = ''
+  this.postSubtitle = ''
+  this.postContent = ''
 }
 </script>
 
@@ -58,6 +64,7 @@ function newPost() {
   gap: 10px;
   height: 100%;
   box-sizing: border-box;
+  flex-grow: 1;
   > .input-text {
     font-family: 'Josefin Sans';
     font-style: normal;
