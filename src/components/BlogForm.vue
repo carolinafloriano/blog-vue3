@@ -1,54 +1,55 @@
-<script setup>
-import { useStore } from '../store/index.js'
-import { computed } from 'vue'
+<script setup lang="ts">
+import { useStore } from '../store'
+import { computed, ref } from 'vue'
+import type { Ref } from 'vue'
+import type { Post } from '../types'
 
-const postTitle = ''
-const postSubtitle = ''
-const postContent = ''
+const postTitle: Ref<string> = ref('')
+const postSubtitle: Ref<string> = ref('')
+const postContent: Ref<string> = ref('')
+
 const store = useStore()
 
-const formEdit = computed(() => {
+const formEdit = computed<boolean>(() => {
   return store.isEditing
 })
 
-defineProps({})
-
-function newPost() {
-  var data = new Date()
-  const dataAtual =
+const newPost = (): void => {
+  const data: Date = new Date()
+  const dataAtual: string =
     String(data.getDate()).padStart(2, '0') +
     '/' +
     String(data.getMonth() + 1).padStart(2, '0') +
     '/' +
     data.getFullYear()
 
-  const post = {
-    title: this.postTitle,
-    subtitle: this.postSubtitle,
+  const post: Post = {
+    title: postTitle.value,
+    subtitle: postSubtitle.value,
     author: 'Carolina Floriano',
     date: dataAtual,
-    content: this.postContent
+    content: postContent.value
   }
   store.updatePostsList(post)
 
-  this.postTitle = ''
-  this.postSubtitle = ''
-  this.postContent = ''
+  postTitle.value = ''
+  postSubtitle.value = ''
+  postContent.value = ''
 }
 </script>
 
 <template>
   <div class="form">
-    <input type="text" placeholder="Insert a title" class="input-text" v-model="postTitle" />
-    <input type="text" placeholder="Insert a subtitle" class="input-text" v-model="postSubtitle" />
+    <input v-model="postTitle" type="text" placeholder="Insert a title" class="input-text" />
+    <input v-model="postSubtitle" type="text" placeholder="Insert a subtitle" class="input-text" />
     <textarea
+      v-model="postContent"
       type="text-area"
       placeholder="Type your post (maxinum 300 characters)"
       max-length="300"
       cols="10"
       rows="100"
       class="input-text area-text"
-      v-model="postContent"
     ></textarea>
     <button type="submit" class="publishButton" @click="newPost()">
       <span v-if="!formEdit">NEW POST</span>

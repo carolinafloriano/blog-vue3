@@ -1,12 +1,13 @@
-<script setup>
+<script setup lang="ts">
 import BlogPost from './components/BlogPost.vue'
 import BlogCard from './components/BlogCard.vue'
 import BlogForm from './components/BlogForm.vue'
-import { useStore } from './store/index.js'
+import { useStore } from './store'
+import type { Post } from './types'
 
 const store = useStore()
 
-const postsList = store.getPostsList
+const postsList: Post[] = store.getPostsList
 </script>
 
 <template>

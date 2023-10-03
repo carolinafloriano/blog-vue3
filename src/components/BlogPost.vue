@@ -1,11 +1,10 @@
-<script setup>
-import { useStore } from '../store/index.js'
+<script setup lang="ts">
+import { useStore } from '../store'
 
 const store = useStore()
 
-function editPost() {
+function editPost(): void {
   store.editPost()
-  console.log(store.isEditing)
 }
 </script>
 

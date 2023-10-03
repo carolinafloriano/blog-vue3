@@ -1,4 +1,6 @@
-const state = () => {
+import type { PostState } from '../types'
+
+const state = (): PostState => {
   return {
     postsList: [
       {
